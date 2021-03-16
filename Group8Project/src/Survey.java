@@ -1,11 +1,96 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 
 
 public class Survey {
+	
+	public static int[] readAverageSurvey(String filename) {
+		String inputLine;
+		File inFile = new File(filename); // creates variable for text file name
+		ArrayList<String> list = new ArrayList<String>();
+		if (inFile.exists()) {
+			Scanner fileInput;
+			try {
+				fileInput = new Scanner(inFile).useDelimiter(",\\s*");
+				
+				while(fileInput.hasNext()) {
+					inputLine = fileInput.next();
+					//System.out.println(inputLine);
+					list.add(inputLine);
+				}
+				
+				//Collections.sort(list);
+				//System.out.println("list size " + list.size());
+				int[] array = new int[list.size()];
+				for(int k = 0; k < array.length; k++) {
+					
+					array[k] = (Integer.parseInt(list.get(k)));
+				}
+				System.out.println("Read Average Answers: " + Arrays.toString(array).replace("[", "").replace("]", ""));  //remove the left and right bracket);
+		        /*for(int k = 0; k < array.length; k++) {
+					
+					System.out.println(array[k]);
+				}*/
+
+				fileInput.close();
+				return array;
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				System.out.println(e);
+				System.exit(1);
+			}	
+		} else {
+			int[] array = new int[0];
+			System.out.println("Read Average Answers: None Exists"); 
+			return array;
+		}	
+		int[] array = new int[0];
+		System.out.println("Read Average Answers: None Exists"); 
+		return array;
+	}
+	
+	public static void writeAverageSurvey(String filename, int[] userAnswers, int[] averageAnswers) {
+		File tempFile = new File(filename); // creates variable for text file name
+		boolean createdNewAverage = false;
+		//if (tempFile.exists()) { 
+		FileWriter PrintWriter;
+		try {
+			PrintWriter = new FileWriter(tempFile);
+			if (averageAnswers.length == 0) {
+				averageAnswers = new int[userAnswers.length];
+				createdNewAverage = true;
+			}
+				
+			for(int k = 0; k < userAnswers.length; k++) {
+				if (createdNewAverage) {
+					averageAnswers[k] = userAnswers[k];
+				} else {
+					averageAnswers[k] = (userAnswers[k] + averageAnswers[k]) / 2;
+				}
+				//System.out.println("userAnswer: " + userAnswers[k] + "| averageAnswers: " + averageAnswers[k]);
+			}
+			System.out.println("Writing Average Answers: " + Arrays.toString(averageAnswers).replace("[", "").replace("]", ""));  //remove the left and right bracket);
+			
+			PrintWriter.write(Arrays.toString(averageAnswers).replace("[", "").replace("]", ""));
+			PrintWriter.close();
+			//System.out.println("Successfully wrote to the file.");
+		} catch (IOException e) {
+			System.out.println(e);
+			System.exit(1);
+			e.printStackTrace();
+			//System.out.println("An error occurred.");
+		} // creates variable for text file name
+		//} else {
+		//	System.out.println("ERROR: " + filename + " not found.");
+		//}	
+	}
+	
 	public static void main(String[] args) {
 
 		int i, i2, i3, j;
@@ -108,7 +193,7 @@ public class Survey {
 		System.out.println("These are your answers!");
 		int counter = 0;
 		while (counter < questionAnswers.length) {
-			System.out.println(questionAnswers[counter]);
+			//System.out.println(questionAnswers[counter]);
 			counter += 1;
 		}
 
@@ -177,7 +262,10 @@ public class Survey {
 		System.out.println(" ");
 		System.out.println("Thank you again for taking our survey! We hope to see you again! :)");
 	
-		
-		
+		System.out.print("[OLD] ");
+		writeAverageSurvey("SurveyAnswers.txt", questionAnswers, readAverageSurvey("SurveyAnswers.txt"));
+		System.out.print("[NEW] ");
+		readAverageSurvey("SurveyAnswers.txt");
 	}
+
 }
