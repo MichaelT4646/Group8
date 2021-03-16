@@ -6,11 +6,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
 
 
-public class Survey {
+
+public class Survey extends JFrame{
+	
+
+	public Survey() {
+		super("Survey");
+        this.setSize(2000, 2000);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        // create a jpanel and add it to the frame
+        this.add(new DrawingPanel());
+
+        this.setVisible(true);
+	}
+	
+	
+
 	
 	public static int[] readAverageSurvey(String filename) {
+		
 		String inputLine;
 		File inFile = new File(filename); // creates variable for text file name
 		ArrayList<String> list = new ArrayList<String>();
@@ -37,6 +55,8 @@ public class Survey {
 					
 					System.out.println(array[k]);
 				}*/
+	
+	
 
 				fileInput.close();
 				return array;
@@ -91,7 +111,13 @@ public class Survey {
 		//}	
 	}
 	
+	
+	
 	public static void main(String[] args) {
+		
+		new Survey();
+		
+		
 
 		int i, i2, i3, j;
 
@@ -99,7 +125,7 @@ public class Survey {
 		System.out.println(
 				"Hello, thank you for participating in this survey! \nPlease answer your questions on a scale from 0 being the worst and 10 being the best. \nPress any key to start the survey.");
 		String question0Answer = keyboardInput.nextLine();
-		int questionAnswers[] = new int[20];
+		int questionAnswers[] = new int[19];
 
 		System.out.println("Question 1: How would you rate the campus life at Quinnipiac this year?");
 		int question1Answer = keyboardInput.nextInt();
@@ -188,78 +214,6 @@ public class Survey {
 			question11Answer = keyboardInput.nextInt();
 		}
 		questionAnswers[10] = question11Answer;
-		
-		System.out.println("Question 12: How do you feel about freshman now having to live on campus for 3 years (10 being very happy)?");
-		int question12Answer = keyboardInput.nextInt();
-		while (question12Answer > 10 || question12Answer < 0) {
-			System.out.println("Please input a number between 0-10.");
-			question12Answer = keyboardInput.nextInt();
-		}
-		questionAnswers[11] = question12Answer;
-		
-		System.out.println("Question 13: How happy are you with deciding to go to Quinnipiac (10 being very happy)?");
-		int question13Answer = keyboardInput.nextInt();
-		while (question13Answer > 10 || question13Answer < 0) {
-			System.out.println("Please input a number between 0-10.");
-			question13Answer = keyboardInput.nextInt();
-		}
-		questionAnswers[12] = question13Answer;
-		
-		System.out.println("Question 14: How satisfied are you with the professors and their teaching at Quinnipiac (10 being very satisfied)?");
-		int question14Answer = keyboardInput.nextInt();
-		while (question14Answer > 10 || question14Answer < 0) {
-			System.out.println("Please input a number between 0-10.");
-			question14Answer = keyboardInput.nextInt();
-		}
-		questionAnswers[13] = question14Answer;
-		
-		System.out.println("Question 15: How satisfied are you with course registration at Quinnipiac (10 being very satisfied)?");
-		int question15Answer = keyboardInput.nextInt();
-		while (question15Answer > 10 || question15Answer < 0) {
-			System.out.println("Please input a number between 0-10.");
-			question15Answer = keyboardInput.nextInt();
-		}
-		questionAnswers[14] = question15Answer;
-		
-		System.out.println("Question 16: How problematic are the lines at the cafeteria (10 being very problematic)?");
-		int question16Answer = keyboardInput.nextInt();
-		while (question16Answer > 10 || question16Answer < 0) {
-			System.out.println("Please input a number between 0-10.");
-			question16Answer = keyboardInput.nextInt();
-		}
-		questionAnswers[15] = question16Answer;
-		
-		System.out.println("Question 17: How problematic are the lines at the cafeteria (10 being very problematic)?");
-		int question17Answer = keyboardInput.nextInt();
-		while (question17Answer > 10 || question17Answer < 0) {
-			System.out.println("Please input a number between 0-10.");
-			question17Answer = keyboardInput.nextInt();
-		}
-		questionAnswers[16] = question17Answer;
-		
-		System.out.println("Question 18: How satisfied are you with your chosen major (10 being very satisfied)?");
-		int question18Answer = keyboardInput.nextInt();
-		while (question18Answer > 10 || question18Answer < 0) {
-			System.out.println("Please input a number between 0-10.");
-			question18Answer = keyboardInput.nextInt();
-		}
-		questionAnswers[17] = question18Answer;
-		
-		System.out.println("Question 19: What would you rate Quinnipiac to other college students (10 being amazing)?");
-		int question19Answer = keyboardInput.nextInt();
-		while (question18Answer > 10 || question19Answer < 0) {
-			System.out.println("Please input a number between 0-10.");
-			question19Answer = keyboardInput.nextInt();
-		}
-		questionAnswers[18] = question19Answer;
-		
-		System.out.println("Question 20: How busy are you as a Quinnipiac student (10 being very busy)?");
-		int question20Answer = keyboardInput.nextInt();
-		while (question20Answer > 10 || question20Answer < 0) {
-			System.out.println("Please input a number between 0-10.");
-			question20Answer = keyboardInput.nextInt();
-		}
-		questionAnswers[19] = question20Answer;
 
 		System.out.println("Thank you for taking the time to complete this survey! It means a lot to us!");
 		System.out.println("These are your answers!");
@@ -338,6 +292,8 @@ public class Survey {
 		writeAverageSurvey("SurveyAnswers.txt", questionAnswers, readAverageSurvey("SurveyAnswers.txt"));
 		System.out.print("[NEW] ");
 		readAverageSurvey("SurveyAnswers.txt");
+		
+	
 	}
 
 }
