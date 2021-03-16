@@ -1,7 +1,13 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
+
+
 
 public class Survey {
 	public static void main(String[] args) {
+
 		int i, i2, i3, j;
 
 		Scanner keyboardInput = new Scanner(System.in);
@@ -170,5 +176,8 @@ public class Survey {
 		System.out.println("The score you gave the most was " + mode + ".");
 		System.out.println(" ");
 		System.out.println("Thank you again for taking our survey! We hope to see you again! :)");
+	
+		
+		
 	}
 }
