@@ -125,7 +125,7 @@ public class Survey extends JFrame{
 		System.out.println(
 				"Hello, thank you for participating in this survey! \nPlease answer your questions on a scale from 0 being the worst and 10 being the best. \nPress any key to start the survey.");
 		String question0Answer = keyboardInput.nextLine();
-		int questionAnswers[] = new int[19];
+		int questionAnswers[] = new int[20];
 
 		System.out.println("Question 1: How would you rate the campus life at Quinnipiac this year?");
 		int question1Answer = keyboardInput.nextInt();
