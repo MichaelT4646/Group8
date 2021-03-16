@@ -15,7 +15,7 @@ public class Survey extends JFrame{
 
 	public Survey() {
 		super("Survey");
-        this.setSize(1000, 1000);
+        this.setSize(2000, 2000);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         // create a jpanel and add it to the frame
