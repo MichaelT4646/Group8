@@ -26,7 +26,7 @@ public class Survey extends JFrame{
 	
 	
 
-	/*
+	
 	public static int[] readAverageSurvey(String filename) {
 		
 		String inputLine;
@@ -57,7 +57,7 @@ public class Survey extends JFrame{
 				}*/
 	
 	
-/*
+
 				fileInput.close();
 				return array;
 			} catch (FileNotFoundException e) {
@@ -111,14 +111,14 @@ public class Survey extends JFrame{
 		//}	
 	}
 	
-	*/
+	
 	
 	public static void main(String[] args) {
 		
 		new Survey();
 		
 		
-/*
+
 		int i, i2, i3, j;
 
 		Scanner keyboardInput = new Scanner(System.in);
@@ -293,7 +293,6 @@ public class Survey extends JFrame{
 		System.out.print("[NEW] ");
 		readAverageSurvey("SurveyAnswers.txt");
 		
-		*/
 	
 	}
 
