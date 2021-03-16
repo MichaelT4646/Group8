@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 
@@ -179,5 +180,50 @@ public class Survey {
 	
 		
 		
+		String inputLine;
+		Scanner fileInput = null;
+		File inFile = new File("SurveyAnswers.txt");
+		ArrayList<String> list = new ArrayList<String>();
+		
+		int count = 0;
+		
+		
+		try {
+			fileInput = new Scanner(inFile).useDelimiter(",\\s*");
+			
+			while(fileInput.hasNext()) {
+				inputLine = fileInput.next();
+				list.add(inputLine);
+			}
+			
+			Collections.sort(list);
+		
+			
+			int[] array = new int[list.size()];
+			
+			
+			for(int k = 0; k < array.length; k++) {
+				
+				array[k] = (Integer.parseInt(list.get(k)));
+			}
+			
+	       for(int k = 0; k < array.length; k++) {
+				
+				System.out.println(array[k]);
+			}
+			
+		
+			
+			
+			
+			
+			
+			fileInput.close();
+		}
+		catch (FileNotFoundException e) {
+			System.out.println(e);
+			System.exit(1);
+		}
 	}
+
 }
