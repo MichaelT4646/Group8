@@ -28,7 +28,7 @@ public class Survey {
 				//Collections.sort(list);
 				//System.out.println("list size " + list.size());
 				int[] array = new int[list.size()];
-				for(int k = 0; k < array.length; k++) {
+				for(int k = 0; k < array.length; k++) { 
 					
 					array[k] = (Integer.parseInt(list.get(k))); 
 				}
