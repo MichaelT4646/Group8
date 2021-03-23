@@ -30,7 +30,7 @@ public class Survey {
 				int[] array = new int[list.size()];
 				for(int k = 0; k < array.length; k++) {
 					
-					array[k] = (Integer.parseInt(list.get(k)));
+					array[k] = (Integer.parseInt(list.get(k))); 
 				}
 				System.out.println("Read Average Answers: " + Arrays.toString(array).replace("[", "").replace("]", ""));  //remove the left and right bracket);
 		        /*for(int k = 0; k < array.length; k++) {
